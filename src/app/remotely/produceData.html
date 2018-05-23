@@ -1,0 +1,11 @@
+<div class="produceData">
+  <navigation [name]="navigations"></navigation>
+  <div class="row">
+    <div class="col-md-9">
+      <module-table [module_table_thead]="module_table_thead" [module_table_tbody]="module_table_body" [module_table_attr]="module_table_attr" [module_table_search]="module_table_search" [module_table_type]="module_table_type"></module-table>
+    </div>
+    <div class="col-md-3">
+      <app-search-machineid (monitoridEvent)="getMonitorEvent($event)"></app-search-machineid>
+    </div>
+  </div>
+</div>

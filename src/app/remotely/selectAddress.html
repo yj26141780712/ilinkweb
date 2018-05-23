@@ -1,0 +1,16 @@
+<div class="Address" *ngIf="isSelect">
+  <div class="select_header">
+    <button (click)="close()"><i class="fa fa-times" aria-hidden="true"></i></button>
+  </div>
+  <div class="select_body">
+    <ul class="first">
+      <li *ngFor="let item of addressArray;let num=index" (click)="addressSelect(num)"><span><i class="fa fa-map-marker" aria-hidden="true"></i>{{item[0]}}</span></li>
+    </ul>
+    <ul class="second">
+      <li *ngFor="let code of secondList;let cNum=index" (click)="selectCode(cNum)"><span><i class="fa fa-map-marker" aria-hidden="true" ></i>{{code[0]}}</span></li>
+    </ul>
+  </div>
+  <div class="select_footer">
+    <button class="btn btn-primary" (click)="output()">选择</button>
+  </div>
+</div>

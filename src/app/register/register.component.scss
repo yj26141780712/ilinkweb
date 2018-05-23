@@ -1,0 +1,14 @@
+.form-register{
+    .form-group{
+        position: relative;   
+        input{
+            padding-right: 30px;             
+        }
+        i{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    }
+   
+}

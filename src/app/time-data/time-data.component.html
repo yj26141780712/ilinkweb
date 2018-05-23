@@ -1,0 +1,80 @@
+<div class="row time-data">
+  <div class="p-x-0 col-sm-2">
+    <div class="two_block">
+      <app-search-machineid (monitoridEvent)="getMonitorEvent($event)" [Mapmid]="Mapmid"></app-search-machineid>
+      <div class="time_state_data">
+        <ul>
+          <li>当前状态:<font>{{detailMachine.workstate}}</font></li>
+          <li>当前动作:<font>{{detailMachine.action}}</font></li>
+          <li>马达状态:<font>{{detailMachine.motor}}</font></li>
+          <li>电热状态:<font>{{detailMachine.electricHeat}}</font></li>
+          <li>当前模数:<font>{{detailMachine.modelNum}}</font></li>
+          <li>总开关模:<font>{{detailMachine.totalNum}}</font></li>
+          <li>全程计时:<font>{{detailMachine.fulltime}}</font></li>
+          <li>开机时间:<font>{{detailMachine.totalhour}}</font></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8 p-x-0">
+    <div class="three_block">
+      <div class="temparture block">
+        <p>料筒温度</p>
+        <div class="temparture_image">
+          <ul class="temparture_data">
+            <li class="{{temp.className}}" *ngFor="let temp of temperatureData">{{temp.value}}</li>
+            <li class="gray">0.00</li>
+          </ul>
+        </div>
+        <ul class="color_config">
+          <li>故障<span class="red"></span></li>
+          <li>全速加热<span class="orange"></span></li>
+          <li>PID加热<span class="yellow"></span></li>
+          <li>停止<span class="blue"></span></li>
+          <li>未使用<span class="gray"></span></li>
+        </ul>
+      </div>
+      <div class="states block">
+        <p>基础状态</p>
+        <div class="equipment">
+          <div class="states_header"> 
+            <span><i class="yellow"></i>设备</span>
+            <div>当前状态:<label class="red">离线</label></div>
+          </div>
+          <div class="states_body">
+            <div id="equipment_view"></div>
+          </div>
+        </div>
+        <div class="communicate">
+          <div class="states_header"> 
+            <span><i class="blue"></i>通讯</span>
+            <div>当前状态:<label class="green">连接</label></div>
+          </div>
+          <div class="states_body">
+            <div id="communicate_view"></div>
+          </div>
+        </div>
+      </div>
+      <div class="time block">
+        <p>主机时间</p>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;" id="progress">
+            50%
+          </div>
+        </div>
+        <ul>
+          <li>总开机:<span>{{detailMachine.totalhour}}</span>小时</li>
+          <li>本次开机:<span class="blue">{{detailMachine.workhour}}</span>小时</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2 p-x-0">
+    <div class="time_warning" [ngSwitch]="detailMachine.state">
+      <p>警报信息</p>
+      <span class="normal" *ngSwitchCase="'正常'"><i class="fa fa-exclamation-triangle green" aria-hidden="true"></i>正常</span>
+      <span class="warning" *ngSwitchCase="'注意'"><i class="fa fa-exclamation-triangle green" aria-hidden="true"></i>注意</span>
+      <span class="danger" *ngSwitchCase="'警告'"><i class="fa fa-exclamation-triangle green" aria-hidden="true"></i>严重警告</span>
+    </div>
+  </div>
+</div>

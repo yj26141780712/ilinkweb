@@ -1,0 +1,54 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">
+    <i class="fa fa-users blue"></i>塑料厂注册</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #myForm="ngForm" class="form-register">
+    <div class="form-group">
+      <input id="factory" required [(ngModel)]="info.factory" name="factory" type="text" class="form-control" placeholder="工厂名称"
+        #factory="ngModel">
+      <i class="fa fa-university"></i>
+      <span class="text-danger" *ngIf="factory.invalid&&(factory.dirty || factory.touched)">
+        工厂不能为空!
+      </span>
+    </div>
+    <div class="form-group">
+      <input id="username" required [(ngModel)]="info.username" name="username" type="text" class="form-control" placeholder="登录用户名"
+        #username="ngModel" (blur)="checkUserName(username.value)">
+      <i class="fa fa-user"></i>
+      <span class="text-danger" *ngIf="username.invalid&&(username.dirty || username.touched)">
+        用户名不能为空!
+      </span>
+      <span class="text-danger" *ngIf="isUserNameRepeat">
+        用户名已存在!
+      </span>
+    </div>
+    <div class="form-group">
+      <input id="password" required [(ngModel)]="info.password" name="password" type="password" class="form-control" placeholder="密码"
+        #password="ngModel">
+      <i class="fa fa-lock"></i>
+      <span class="text-danger" *ngIf="password.invalid&&(password.dirty || password.touched)">
+        密码为空!
+      </span>
+    </div>
+    <div class="form-group">
+      <input id="password1" required [(ngModel)]="info.passwordRe" name="passwordRe" type="password" class="form-control" placeholder="确认密码"
+        #passwordRe="ngModel">
+      <i class="fa fa-retweet"></i>
+      <span class="text-danger" *ngIf="passwordRe.invalid&&(passwordRe.dirty || passwordRe.touched)">
+        确认密码不能为空!
+      </span>
+      <span class="text-danger" *ngIf="password.value!=passwordRe.value&&passwordRe.value">
+        两次输入密码不一致!
+      </span>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <input type="button" class="btn btn-sm" value="重置" (click)="reset()">
+  <input type="button" class="btn btn-sm btn-primary" value="注册" [disabled]="!(myForm.valid&&password.value==passwordRe.value) || isUserNameRepeat"
+    (click)="register()">
+</div>

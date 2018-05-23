@@ -1,0 +1,6 @@
+<div class="client">
+  <navigation [name]="navigations"></navigation>
+  <div class="client_content">
+    <module-table [module_table_thead]="module_table_thead" [module_table_tbody]="module_table_body" [module_table_attr]="module_table_attr" [module_table_type]="module_table_type" (ClientEvent)="getClient($event)" [module_table_search]="module_table_search"></module-table>
+  </div>
+</div>

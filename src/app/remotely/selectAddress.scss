@@ -1,0 +1,62 @@
+.Address{
+  position:absolute;
+  z-index:11;
+  top:100px;
+  left:50%;
+  width:600px;
+  margin-left:-300px;
+  height:700px;
+  background-color:#fafafa;
+  overflow:hidden;
+  .select_header{
+    overflow:hidden;
+    line-height:40px;
+    border-bottom:1px solid #ccc;
+    button{
+      background-color:transparent;
+      border-width:0px;
+      float:right;
+      margin:0 18px;
+    }
+  }
+  .select_body{
+    padding:1rem;
+    overflow:hidden;
+    overflow-y:auto;
+    height:600px;
+    ul{
+      width:50%;
+      top:0;
+      float:left;
+      li{
+        cursor:pointer;
+        font-size:14px;
+        line-height:20px;
+        padding:5px;
+        color:#4D6878;
+        span{
+          i{
+            margin:0 2px;
+          }
+        }
+      }
+      li:hover{
+        background-color:#F0F7FC;
+      }
+      li.select{
+        background-color:#F0F7FC;
+        color:#de6a6a;
+      }
+    }
+  } 
+  .select_footer{
+    border-top:1px solid #ccc;
+    text-align:right;
+    line-height:60px;
+    background-color:#eff3f8;
+    button{
+      border-radius:0px;
+      margin-right:2rem;
+    }
+  }
+}

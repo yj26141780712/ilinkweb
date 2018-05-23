@@ -1,0 +1,66 @@
+<form [formGroup]="employeeForm" (ngSubmit)="submit(employeeForm.value)">
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{title}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+<span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="userName"><i>*</i>用户账号：</label>
+            <div class="col-sm-6">
+                <input type="text" name="userName" class="form-control" formControlName="userName">
+            </div>
+            <label *ngIf="formErrors.userName" class="form-control-label col-sm-3 text-danger pl-0">
+                {{formErrors.userName}}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="passWord"><i>*</i>用户密码：</label>
+            <div class="col-sm-6">
+                <input type="text" name="passWord" class="form-control" formControlName="passWord">
+            </div>
+            <label *ngIf="formErrors.passWord" class="form-control-label col-sm-3 text-danger pl-0">
+                 {{formErrors.passWord}}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="role"><i>*</i>用户角色：</label>
+            <div class="col-sm-6">
+                <select class="form-control" name="role" formControlName="role">
+                  <option *ngFor="let role of roles" [value]="role.id">{{role.name}}</option>
+                </select>
+            </div>
+            <label *ngIf="formErrors.role" class="form-control-label col-sm-3 text-danger pl-0">
+               {{formErrors.role}}
+          </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="name"><i>*</i>用户姓名：</label>
+            <div class="col-sm-6">
+                <input type="text" name="name" class="form-control" formControlName="name">
+            </div>
+            <label *ngIf="formErrors.name" class="form-control-label col-sm-3 text-danger pl-0">
+               {{formErrors.name}}
+          </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="phone"><i>*</i>联系方式：</label>
+            <div class="col-sm-6">
+                <input type="text" name="phone" class="form-control" formControlName="phone">
+            </div>
+            <label *ngIf="formErrors.phone" class="form-control-label col-sm-3 text-danger pl-0">
+              {{formErrors.phone}}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="remark">备注信息：</label>
+            <div class="col-sm-6">
+                <input type="text" name="remark" class="form-control" formControlName="remark">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-sm btn-primary" [disabled]="!this.employeeForm.valid" value="提交">
+    </div>
+</form>

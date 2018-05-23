@@ -1,0 +1,34 @@
+<div class="communicate">
+  <navigation [name]="navigations"></navigation>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="choose_address">
+        <ul>
+          <li>
+            <font>地址：</font>
+            <input type="text" class="form-control" placeholder="例如：0x00010001" id="input_Address" #address>
+            <button class="btn btn-primary" type="button" (click)="openModal()">选择地址</button>
+          </li>
+          <li>
+            <font>长度：</font>
+            <input type="text" class="form-control form_length" placeholder="偏移长度" #length>
+          </li>
+        </ul>
+        <div class="send_button">
+          <button class="btn btn-primary" (click)="submitCommunite(length,address)">发送</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="show_Message">
+        <textarea id="Message">{{msg}}</textarea>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <app-search-machineid (monitoridEvent)="getMonitorEvent($event)"></app-search-machineid>
+    </div>
+    <div class="selectAddress" (click)="hide()">
+    </div>
+    <selectAddress (addressEvent)="getAddress($event)" [isSelect]="isSelect"></selectAddress>
+  </div>
+</div>

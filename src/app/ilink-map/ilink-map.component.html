@@ -1,0 +1,32 @@
+<div class="ilink_Map">
+  <div class="ilink_baiduMap">
+    <div id="ilink_baiduMap"></div>
+    <ul class="Machine_message">
+      <li class="blue">机器总数:{{MachineCount.total}}台</li>
+      <li class="orange">运行机器:{{MachineCount.running}}台</li>
+      <li class="purple">服务区域:{{MachineCount.service}}个</li>
+    </ul>
+  </div>
+  <div class="Map_Total_message">
+    <ul>
+      <li class="run_m">
+        <p>机器运行数
+          <button class="btn" *ngFor="let btn of countBtn" [class.select]="countBtnSelect==btn.name" (click)="countSelect(btn.name)">
+            {{ btn.title }}
+          </button>
+        </p>
+        <div id="run_m_ech">
+        </div>
+      </li>
+      <li class="m_propo">
+        <p>机器类型占比
+          <button class="btn" *ngFor="let btn of typeBtn" [class.select]="typeBtnSelect==btn.name" (click)="typeSelect(btn.name)">
+            {{ btn.title }}
+          </button>
+        </p>
+        <div id="m_propo_ech">
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

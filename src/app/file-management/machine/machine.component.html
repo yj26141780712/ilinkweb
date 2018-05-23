@@ -1,0 +1,10 @@
+<div class="machineManagement">
+  <navigation [name]="navigations"></navigation>
+  <div class="machine_content">
+    <div #ft style="height: 100%;width: 100%">
+      <app-fix-table [gwidth]="ft.clientWidth" [settings]="settings" [source]="source" (sortEvent)="sortEvent($event)" (selectEvent)="selectEvent($event)"
+        (rowOperation)="rowOperation($event)">
+      </app-fix-table>
+    </div>
+  </div>
+</div>

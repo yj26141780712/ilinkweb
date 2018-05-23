@@ -1,0 +1,40 @@
+<div class="produce_list">
+  <navigation [name]="navigations"></navigation>
+  <div class="produce_banner">
+      <span class="produce_count">共{{machine_count}}台</span>
+      <div class="porduce_filp_page">
+        <span class="produce_page_count">显示第{{current_page}}页，共{{total_page}}页</span>
+        <ul>
+          <li (click)="first()"><i class="fa fa-angle-double-left" aria-hidden="true"></i></li>
+          <li (click)="prev()"><i class="fa fa-angle-left" aria-hidden="true"></i></li>
+          <li><input type="number" value="{{current_page}}" min="1"></li>
+          <li (click)="next()"><i class="fa fa-angle-right" aria-hidden="true"></i></li>
+          <li (click)="last()"><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
+        </ul>
+      </div>
+  </div>
+  <div class="produce_content">
+    <div class="produce_item {{item.className}}" *ngFor="let item of page_data">
+      <div class="produce_item_header">
+        <ul>
+          <li><i class="fa fa-user-circle-o" aria-hidden="true"></i>名称:<font>{{item.name}}</font></li>
+          <li><i class="fa fa-address-card-o" aria-hidden="true"></i>编号:<font>{{item.sn}}</font></li>
+        </ul>
+      </div>
+      <div class="produce_item_body">
+        <ul>
+          <li><label>状态:</label>{{item.workstate}}</li>
+          <li><label>动作:</label>{{item.action}}</li>
+          <li><label>马达:</label>{{item.motor}}</li>
+          <li><label>电热:</label>{{item.electricHeat}}</li>
+        </ul>
+        <ul>
+          <li><label>当前模数:</label>{{item.modelNum}}</li>
+          <li><label>总开模数:</label>{{item.totalNum}}</li>
+          <li><label>全程计时:</label>{{item.fulltime}}</li>
+          <li><label>开机时间:</label>{{item.workhour}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

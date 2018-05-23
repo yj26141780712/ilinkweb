@@ -1,0 +1,42 @@
+<navigation [name]="navigations"></navigation>
+<div class="page-content">
+  <div class="row">
+    <div class="col-sm-7 col-md-12">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="blue bigger">公司信息</h4>
+        </div>
+        <div class="modal-body">
+          <form cclass="form-inline" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+            <div class="form-group">
+              <label for="id">公司ID：</label>
+              <input type="text" class="form-control" placeholder="公司ID" name="id" formControlName="id" readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="name">公司名称：</label>
+              <input type="text" class="form-control" placeholder="公司名称" name="name" formControlName="name">
+            </div>
+            <div class="form-group">
+              <label for="address">公司地址：</label>
+              <input type="text" class="form-control" placeholder="公司地址" name="address" formControlName="address">
+            </div>
+            <div class="form-group">
+              <label for="phone">联系电话：</label>
+              <input type="text" class="form-control" placeholder="联系电话" name="phone" formControlName="phone">
+            </div>
+            <div class="form-group">
+              <label for="note">备注信息：</label>
+              <textarea class="form-control" placeholder="备注信息" name="note" formControlName="note">
+              </textarea>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-lg" (click)="reset();" value="重置">
+              <input type="submit" class="btn btn-lg btn-primary" value="确定">
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

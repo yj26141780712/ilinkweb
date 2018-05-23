@@ -1,0 +1,63 @@
+<div class="ilink_menu">
+  <ul *ngIf="menu_fold" class="menu_fold">
+    <div class="logo">
+      <img src="./assets/images/login_logo.png">
+    </div>
+    <li class="menu_select" *ngFor="let item of awesomeStr;let num=index" (mouseover)="menuHovershow(num)" (mouseout)="menuHoverhide(num)">
+      <span class="{{item.color}}">
+        <i class="fa {{item.i}}" aria-hidden="true"></i>
+      </span>
+      <div class="menu_list">
+        <ul>
+          <li class="menu_list_title">{{item.title}}</li>
+          <li *ngFor="let demo of item.list">
+            <a [routerLink]="[demo.rounter]">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>{{demo.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <ul *ngIf="!menu_fold" class="menu_unfold">
+    <h2>iLink 系统</h2>
+    <li *ngFor="let item of awesomeStr;let num=index">
+      <div class="menu_title" (click)='slideToggle(num)'>
+        <span class="{{item.color}}">
+          <i class="fa {{item.i}}" aria-hidden="true"></i>
+        </span>
+        {{item.title}}
+      </div>
+      <div class="menu_list">
+        <ul>
+          <li *ngFor="let demo of item.list">
+            <a [routerLink]="[demo.rounter]">{{demo.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <div class="fold">
+    <span>
+      <i class="fa fa-angle-double-right" aria-hidden="true" *ngIf="menu_fold"></i>
+      <i class="fa fa-angle-double-left" aria-hidden="true" aria-hidden="true" *ngIf="!menu_fold"></i>
+    </span>
+  </div>
+</div>
+<div class="ilink_body">
+  <div class="ilink_header">
+    <button class="btn">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    <div class="user_set">
+      <span class="user_avatar"></span>
+      <select class="form-control">
+        <option>{{admin}}</option>
+      </select>
+      <button class="btn" (click)="gotoLogin()">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>退出</button>
+    </div>
+  </div>
+  <div class="ilink_content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

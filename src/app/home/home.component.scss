@@ -1,0 +1,284 @@
+.ilink_header{
+    background:linear-gradient(to left,#046de1 20%,#05badd 100%);
+    font-size: 0px;
+    line-height: 5rem;
+    overflow:hidden;
+    i{
+      color: #fff;
+      font-size: 2rem;
+    }
+    button{
+      width: 5%;
+      height: 100%;
+      display: inline-block;
+      background-color: transparent;
+    }
+    div.logo{
+      width: 5rem;
+      display: inline-block;
+      img{
+        width: 80%;
+      }
+    }
+    .user_set{
+      width:300px;
+      height:inherit;
+      display:inline-block;
+      float:right;
+      .user_avatar{
+        display:inline-block;
+        width:40px;
+        height:40px;
+        vertical-align:middle;
+        border-radius:50%;
+        background:url('/assets/images/user_logo.jpg') no-repeat;
+        background-size:100%;
+        margin:0px 5px;
+      }
+      select.form-control{
+        border:0px;
+        width:9rem;
+        display:inline-block;
+        vertical-align:middle;
+        font-size:1.3rem;
+        background-color:transparent;
+        height:3rem;
+        color:#fff;
+        margin:0px 5px;
+        box-shadow:0px 0px transparent;
+        option{
+          color:#fff;
+          font-size:1.2rem;
+          padding:5px;
+        }
+      }
+      button{
+        width:30%;
+        color:#fff;
+        font-size:1.2rem;
+        i{
+          color:#fff;
+          margin:0 5px;
+        }
+      }
+    }
+  }
+  
+  
+  /*body*/
+  .ilink_body{
+    height:100%;
+  }
+  /*menu*/
+  .ilink_menu{
+    box-shadow:1px 5px 10px #222;
+    //border-right: 1px solid #ddd;
+    height:100%;
+    float: left;
+    position:relative;
+    background-color: #fafafa;
+  }
+  .ilink_menu>ul.menu_fold{ 
+    .logo{
+      height:60px;
+      img{
+        width:50px;
+      }
+    }
+    li{
+      width: 50px;
+      height: 6rem;
+      padding:1rem 0rem;
+      line-height: 50px;
+      text-align: center;
+      font-size: 1.5rem;
+      position: relative;
+      span{
+        text-align:center;
+        display:inline-block;
+        width:36px;
+        height:36px;
+        line-height:36px;
+        border-radius:50%;
+        vertical-align:middle;
+        margin:0px 5px;
+        //margin-left:1rem;
+        i{
+          font-size: 18px;
+          color: #fff;
+        }
+      }
+      span.green{
+        background-color:#3ac051;
+      }
+      span.blue{
+        background-color:#4b89ff;
+      }
+      span.orange{
+        background-color:#ff7823;
+      }
+      .menu_list{
+        display: none;
+        position: absolute;
+        width: 180px;
+        top:16px;
+        left: 50px;
+        z-index:999;
+        ul{
+          border:1px solid #ddd;
+          li{
+            width:inherit;
+            font-size: 1.2rem;
+            text-align: left;
+            height: 50px;
+            line-height:50px;
+            border-bottom: 1px solid #ddd;
+            text-indent: 1rem;
+            position: relative;
+            padding:0rem;
+            background-color: #fafafa;
+            i{
+              display:none;
+              position: absolute;
+              top: 40%;
+              left: -8px;
+              color: #1b8fda;
+            }
+          }
+          li:not(.menu_list_title):hover{
+            background-color: #ddf2ff;
+            color: #1b8fda;
+            i{
+              display: inline-block;
+            }
+          }
+          .menu_list_title{
+            color: #1b8fda;
+            position: relative;
+            background-color: #eee;
+          }
+          .menu_list_title:after{
+            content:"";
+            width: 10px;
+            position: absolute;
+            margin-left: -5px;
+            margin-top: -5px;
+            left: 0px;
+            top: 50%;
+            transform: rotate(45deg);
+            background-color: #eee;
+            border-color: #ddd;
+            border-style: solid;
+            border-width: 0px 0px 1px 1px;
+            height: 10px;
+          }
+        }
+      }
+    }
+  
+  }
+  .ilink_menu>ul.menu_fold>li:hover{
+    i{
+      color:#1b8fda;
+    }
+  }
+  
+  .ilink_content{
+    overflow-y:auto;
+    z-index: 10;
+    float: left;
+    height: calc(100% - 5rem);
+    //border-left: 1px solid #ddd;
+    width: calc(100% - 50px);
+  }
+  /*向右的拉伸*/
+  .fold{
+    margin-top:1rem;
+    line-height:3rem;
+    text-align:center;
+    span{
+      width:30px;
+      display:inline-block;
+      vertical-align:middle;
+      height:30px;
+      line-height:30px;
+      border-radius:50%;
+      background:linear-gradient(to right,#05bcdd 10%,#046ee1 100%);
+      i{
+        color:#fff;
+        font-size:18px;
+      }
+    }
+  }
+  .menu_unfold{
+    width:166px;
+    h2{
+      height:60px;
+      line-height:60px;
+      margin:0;
+      text-align:center;
+      font-size:25px;
+      color:#046fe0;
+      font-weight:bold;
+    }
+    li{
+      line-height: 4rem;
+      padding:1rem 0rem;
+      text-align: left;
+      font-size: 15px;
+      .menu_title{
+        span{
+          text-align:center;
+          display:inline-block;
+          width:36px;
+          height:36px;
+          line-height:36px;
+          border-radius:50%;
+          vertical-align:middle;
+          margin:0px 5px;
+          margin-left:1rem;
+          i{
+            font-size:18px;
+            vertical-align:middle;
+            color:#fff;
+          }
+        }
+        span.green{
+          background-color:#3ac051;
+        }
+        span.blue{
+          background-color:#4b89ff;
+        }
+        span.orange{
+          background-color:#ff7823;
+        }
+      }
+      .menu_list{
+        display:none;
+        background-color:#f5f5f5;
+        
+        ul{
+          li{
+            height:55px;
+            padding:0px;
+            line-height:55px;
+            font-size:1.3rem;
+            text-align:center;
+            border-bottom:1px #bbb solid;
+          }
+          li:first-child{
+            box-shadow:0px 2px 3px #999 inset;
+          }
+          li:last-child{
+            box-shadow:0px -2px 3px #999 inset;
+            border-bottom-width:0px;
+          }
+        }
+      }
+    }
+  }
+  .menu_unfold>li:hover .menu_title{
+    color:#0489e0;
+    font-weight:bold;
+    box-shadow:-4px 0px 0px #0289e2 inset;
+  }

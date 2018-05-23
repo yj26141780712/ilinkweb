@@ -1,0 +1,28 @@
+<form [formGroup]="areaForm" (ngSubmit)="submit(areaForm.value)">
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{title}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+  <span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="areaName"><i>*</i>片区名称：</label>
+            <div class="col-sm-6">
+                <input type="text" name="areaName" class="form-control" formControlName="areaName">
+            </div>
+            <label *ngIf="formErrors.areaName" class="form-control-label col-sm-3 text-danger pl-0">
+              {{formErrors.areaName}}
+          </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="remark">备注信息：</label>
+            <div class="col-sm-6">
+                <input type="text" name="remark" class="form-control" formControlName="remark">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-sm btn-primary" [disabled]="!this.areaForm.valid" value="提交">
+    </div>
+</form>

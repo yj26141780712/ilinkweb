@@ -1,0 +1,10 @@
+<div class="search_Machineid">
+  <p>机器信息</p>
+  <ul>
+    <li>机器编号：{{detail_Machine.id}} <button class="btn btn-primary" (click)="selectMID()"><i class="fa fa-exchange" aria-hidden="true"></i></button></li>
+    <li>机器名称：{{detail_Machine.name}}</li>
+    <li>出厂日期：{{detail_Machine.out_date}}</li>
+    <li>所在省市：<i class="fa fa-map-marker" aria-hidden="true"></i>{{detail_Machine.province}}</li>
+    <li>所在位置：<i class="fa fa-map-marker" aria-hidden="true"></i><span>{{detail_Machine.position}}</span></li>
+  </ul>
+</div>

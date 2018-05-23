@@ -1,0 +1,70 @@
+<div class="shutDown">
+  <navigation [name]="navigations"></navigation>
+  <div class="row">
+    <div class="col-md-9 col-md-9">
+      <div class="alert alert-danger alert-dismissible" role="alert" *ngIf="error">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>警告!</strong> {{msg}}
+      </div>
+      <div class="alert alert-warning alert-dismissible" role="alert" *ngIf="warning">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>警告!</strong> {{msg}}
+      </div>
+      <div class="alert alert-info alert-dismissible" role="alert" *ngIf="success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{msg}}
+      </div>
+      <div class="shutDown_form">
+        <div *ngIf="!isStop" class="stopMachine">
+          <ul>
+            <li><label>停机功能:</label>
+              <select class="stop_select" id="feature" (change)="changeFeature(stop)" #stop disabled class="stop">
+                <option value="0">不使用</option>
+                <option value="1">使用</option>
+              </select></li>
+            <li><label>停机方式:</label>
+              <select disabled id="method" class="stop enabled" #method (blur)="open(method,num)">
+                <option value="0">按间隔数</option>
+                <option value="1">按每月固定日期</option>
+                <option value="2">按设定日期</option>
+              </select></li>
+            <li><label>分期数:</label><input type="number" disabled id="sep_count" class="enabled" #num (blur)="openDays(method,num)" placeholder="输入1-6的分期数"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></li>
+            <li><label>停机时间:</label><input type="number" disabled id="hour" class="enabled" #hour (blur)="nonEmpty()">时<input class="enabled" type="number" disabled id="minute" #minute (blur)="nonEmpty()">分<i class="fa fa-exclamation-circle" aria-hidden="true"></i></li>
+            <li><label>间隔天数:</label><input type="number" disabled id='day' #days></li>
+            <li><label>机器编码:</label><input type="text" disabled placeholder="6-8位数字或字母" id="MachineCode" class="enabled" #sn (blur)="nonEmpty()"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></li>
+            <li><label>识别码:</label><input type="text" disabled placeholder="10000-60000" id="Code" class="enabled" #identifier (blur)="nonEmpty()"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></li>
+            <li><label>确认识别码:</label><input type="text" disabled placeholder="10000-60000" id="checkCode" class="enabled"><i class="fa fa-exclamation-circle" aria-hidden="true" (blur)="nonEmpty()"></i></li>
+          </ul>
+          <ul>
+            <li>&nbsp;</li>
+            <li><label>出厂日期:</label><input type="date" disabled id="stop_0"  class="enabled" #output><i class="fa fa-exclamation-circle" aria-hidden="true"></i></li>
+            <li><label>首期停机日期:</label><input type="date" disabled id="stop_1"  class="enabled" #cycle1><i class="fa fa-exclamation-circle" aria-hidden="true"></i></li>
+            <li><label>二期停机日期:</label><input type="text" disabled id="stop_2" #cycle2 value="2016-11-09"></li>
+            <li><label>三期停机日期:</label><input type="text" disabled id="stop_3" #cycle3 value="2016-11-09"></li>
+            <li><label>四期停机日期:</label><input type="text" disabled id="stop_4" #cycle4 value="2016-11-09"></li>
+            <li><label>五期停机日期:</label><input type="text" disabled id="stop_5" #cycle5 value="2016-11-09"></li>
+            <li><label>六期停机日期:</label><input type="text" disabled id="stop_6" #cycle6 value="2016-11-09"></li>
+          </ul>
+          <div class="shutDown_button">
+            <button class="btn btn-primary" (click)="submitStopMessage(stop,method,num,hour,minute,days,sn,identifier,output,cycle1,cycle2,cycle3,cycle4,cycle5,cycle6)">发送</button>
+          </div>
+        </div>
+        <div *ngIf="isStop" class="openMachine">
+          <ul>
+            <li><label>机器编码:</label><input type="text" disabled value="{{openMessage.code}}"></li>
+            <li><label>出厂日期:</label><input type="text" disabled value="{{openMessage.out}}"></li>
+            <li><label>当前期数:</label><input type="text" disabled value="{{openMessage.curr}}"></li>
+            <li><label>分期数:</label><input type="text" disabled value="{{openMessage.count}}"></li>
+            <li><label>密码:</label><input type="text" #code><i class="fa fa-exclamation-circle" aria-hidden="true"></i></li>
+          </ul>
+          <div class="shutDown_button">
+            <button class="btn btn-primary" (click)="sendOpenMessage(code)">发送</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-md-3">
+      <app-search-machineid (monitoridEvent)="getMonitorEvent($event)"></app-search-machineid>
+    </div>
+  </div>
+</div>

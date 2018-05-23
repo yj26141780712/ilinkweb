@@ -1,0 +1,175 @@
+<div class="datagird-search row" [style.height]='h_gird_search'>
+    <div class="col-sm-4 col-md-4">
+        显示第
+        <span>{{beginNum}}</span>到
+        <span>{{endNum}}</span>项结果
+    </div>
+    <div class="col-sm-8 col-md-8">
+        <div class="datafilter form-inline">
+            <label>Search:
+                <input type="text" class="form-control input-sm" placeholder="" [(ngModel)]="searchInput" (keydown)="searchEvent($event)" (blur)="searchEvent($event)">
+            </label>
+        </div>
+    </div>
+</div>
+<div class="datagird-view" [style.height]='h_gird_view'>
+    <div class="datagird-view1" [style.width]="w_gird_fixed">
+        <div class="datagird-header" [style.height]="h_gird_header">
+            <div class="datagird-header-inner">
+                <table class="datagird-htable" [style.width]="w_gird_fixed">
+                    <thead>
+                        <tr [style.height]="h_gird_header">
+                            <td *ngIf="isfixed&&config.isShowCheck" [style.width]="w_checkbox+'px'" >
+                                <input type="checkbox" (click)="selectAllRow($event.target.checked)" [checked]="isAllCheck()">
+                            </td>
+                            <td *ngIf="isfixed&&isfunction" [style.width]="w_op+'px'">
+                                <div>功能区</div>
+                            </td>
+                            <ng-container *ngFor="let column of config.columns">
+                                <td *ngIf="column.fixed" [style.width]="column.width+'px'">
+                                    <div>{{column.title}}</div>
+                                    <i class="fa" *ngIf="column.sort" [ngClass]="column.sortType?column.sortType:'fa-sort'" aria-hidden="true" (click)="sort(column)">
+                                    </i>
+                                </td>
+                            </ng-container>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="datagird-body" [style.height]="h_gird_body" [scrollTop]="scrollTop">
+            <div class="datagird-body-inner">
+                <table class="datagird-btable" [style.width]="w_gird_fixed">
+                    <tbody>
+                        <tr *ngFor="let item of sourceShow;let i= index" [class.hoverShow]="i==i_hover&&!isCheck(i)" [class.hoverActiveShow]="i==i_hover&&isCheck(i)" [class.active]="isCheck(i)" [style.height]="h_gird_body_tr" (click)="selectTr(i)" (mouseover)="mouseoverTr(i)" (mouseout)="mouseoutTr(i)" >
+                            <td *ngIf="isfixed&&config.isShowCheck" [style.width]="w_checkbox+'px'">
+                                <input type="checkbox" (click)="selectOneRow($event,i)" [checked]="isCheck(i)">
+                            </td>
+                            <td *ngIf="isfixed&&isfunction" [style.width]="w_op+'px'">
+                                <div class="operation">
+                                    <a href *ngFor="let op of config.operation" class="fa" [ngClass]="op.iconClass" [title]="op.title" (click)="opClick($event,op,item)">
+                                    </a>
+                                </div>
+                            </td>
+                            <ng-container *ngFor="let column of config.columns">
+                                <td *ngIf="column.fixed" [style.width]="column.width+'px'">
+                                    <div>{{ item[column.field]}}</div>
+                                </td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="datagird-footer">
+
+        </div>
+    </div>
+    <div class="datagird-view2" [style.left]="w_gird_fixed">
+        <div class="datagird-header" [style.height]="h_gird_header" [scrollLeft]="scrollLeft">
+            <div class="datagird-header-inner">
+                <table class="datagird-htable" [style.height]="h_gird_header" [style.width]="w_gird_table">
+                    <thead>
+                        <tr [style.height]="h_gird_header">
+                            <td *ngIf="!isfixed&&config.isShowCheck" [style.width]="w_checkbox+'px'">
+                                <input type="checkbox" (click)="selectAllRow($event.target.checked)" [checked]="isAllCheck()">
+                            </td>
+                            <td *ngIf="!isfixed&&isfunction" [style.width]="w_op+'px'">
+                                <div>功能区</div>
+                            </td>
+                            <ng-container *ngFor="let column of config.columns">
+                                <td *ngIf="!column.fixed" [style.width]="column.width+'px'">
+                                    <div>{{column.title}}</div>
+                                    <i class="fa" *ngIf="column.sort" [ngClass]="column.sortType?column.sortType:'fa-sort'" aria-hidden="true" (click)="sort(column)">
+                                    </i>
+                                </td>
+                            </ng-container>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="datagird-body" [style.height]="h_gird_body" (scroll)="scroll($event)">
+            <table class="datagird-btable " [style.width]="w_gird_table">
+                <tbody>
+                    <tr *ngFor="let item of sourceShow;let i = index" [class.hoverShow]="i==i_hover" [class.hoverActiveShow]="i==i_hover&&isCheck(i)" [class.active]="isCheck(i)" [style.height]="h_gird_body_tr" (click)="selectTr(i)" (mouseover)="mouseoverTr(i)" (mouseout)="mouseoutTr(i)">
+                        <td *ngIf="!isfixed&&config.isShowCheck" [style.width]="w_checkbox+'px'">
+                            <input type="checkbox" (click)="selectOneRow($event,i)" [checked]="isCheck(i)">
+                        </td>
+                        <td *ngIf="!isfixed&&isfunction" [style.width]="w_op+'px'">
+                            <div class="operation">
+                                <a href *ngFor="let op of config.operation" class="fa" [ngClass]="op.iconClass" [title]="op.title" (click)="opClick($event,op,item)">
+                                </a>
+                            </div>
+                        </td>
+                        <ng-container *ngFor="let column of config.columns">
+                            <td *ngIf="!column.fixed" [style.width]="column.width+'px'">
+                                <div>{{ item[column.field] }}</div>
+                            </td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="datagird-footer">
+        </div>
+    </div>
+    <div class="datagird-loading" *ngIf="!source">
+        <h2>数据加载中</h2>
+    </div>
+</div>
+<div class="datagird-page" [style.height]='h_gird_page'>
+    <div class="page-left">
+        <div>
+            显示
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle" (click)="clickPageNum($event)">
+                {{itemsPerPage}}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropUpShow" [class.show]="isPageSelectShow">
+                <li *ngFor="let pageNum of pageNums">
+                    <a class="dropdown-item" href="#" (click)="selectPageNum($event)">{{pageNum}}</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            条,共{{totalItems}}条
+        </div>
+    </div>
+    <div class="page-right">
+        <ul class="pagination">
+            <li class="pagination-first page-item" [class.disabled]="noPrevious()">
+                <a class="page-link" href (click)="selectPage(1, $event)">
+                    首页
+                </a>
+            </li>
+            <li class="pagination-prev page-item" [class.disabled]="noPrevious()">
+                <a class="page-link" href (click)="selectPage(currentPage - 1, $event)">
+                    上一页
+                </a>
+            </li>
+
+            <li *ngFor="let pg of pages" [class.active]="pg.active" [class.disabled]="pg.active" class="pagination-page page-item">
+                <a class="page-link" href (click)="selectPage(pg.number, $event)" [innerHTML]="pg.text"></a>
+            </li>
+
+            <li class="pagination-next page-item" [class.disabled]="noNext()">
+                <a class="page-link" href (click)="selectPage(currentPage + 1, $event)">
+                    下一页
+                </a>
+            </li>
+
+            <li class="pagination-last page-item" [class.disabled]="noNext()">
+                <a class="page-link" href (click)="selectPage(totalPages, $event)">
+                    尾页
+                </a>
+            </li>
+        </ul>
+        <input id="test" type="text" class="form-control" [(ngModel)]="inputPage" (keydown)="keydown($event)" (keypress)="keypress($event)">
+        <button class="btn btn-primary" (click)="selectPage(inputPage, $event)">
+            <i class="fa fa-step-forward" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>

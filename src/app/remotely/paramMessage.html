@@ -1,0 +1,889 @@
+<div class="paramMessage">
+  <navigation [name]="navigations"></navigation>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="alert alert-info">
+        <strong>参数快速设定&机器配置</strong>
+        <button class="btn btn-primary" (click)="refresh()">
+          <i class="fa fa-refresh" aria-hidden="true"></i>刷新</button>
+      </div>
+      <div class="machine_param" *ngIf="normal">
+        <div class="row">
+          <div class="col-md-4">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <span>关模</span>
+                  </td>
+                  <td>压力</td>
+                  <td>速度</td>
+                  <td>位置</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>一段</td>
+                  <td>{{MData.yali_guanmoyiduan}}</td>
+                  <td>{{MData.sudu_guanmoyiduan}}</td>
+                  <td>{{MData.zhongzhiweizhi_guanmoyiduan}}</td>
+                </tr>
+                <tr>
+                  <td>二段</td>
+                  <td>{{MData.yali_guanmoerduan}}</td>
+                  <td>{{MData.sudu_guanmoerduan}}</td>
+                  <td>{{MData.zhongzhiweizhi_guanmoerduan}}</td>
+                </tr>
+                <tr>
+                  <td>三段</td>
+                  <td>{{MData.yali_guanmosanduan}}</td>
+                  <td>{{MData.sudu_guanmosanduan}}</td>
+                  <td>{{MData.zhongzhiweizhi_guanmosanduan}}</td>
+                </tr>
+                <tr>
+                  <td>低压</td>
+                  <td>{{MData.yali_diyamobao}}</td>
+                  <td>{{MData.sudu_diyamobao}}</td>
+                  <td>{{MData.zhongzhiweizhi_diyamobao}}</td>
+                </tr>
+                <tr>
+                  <td>高压</td>
+                  <td>{{MData.yali_gaoyamosuo}}</td>
+                  <td>{{MData.sudu_gaoyamosuo}}</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <span>开模</span>
+                  </td>
+                  <td>压力</td>
+                  <td>速度</td>
+                  <td>位置</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>一段</td>
+                  <td>{{MData.yali_kaimoyiduan}}</td>
+                  <td>{{MData.sudu_kaimoyiduan}}</td>
+                  <td>{{MData.zhongzhiweizhi_kaimoyiduan}}</td>
+                </tr>
+                <tr>
+                  <td>二段</td>
+                  <td>{{MData.yali_kaimoerduan}}</td>
+                  <td>{{MData.sudu_kaimoerduan}}</td>
+                  <td>{{MData.zhongzhiweizhi_kaimoerduan}}</td>
+                </tr>
+                <tr>
+                  <td>三段</td>
+                  <td>{{MData.yali_kaimosanduan}}</td>
+                  <td>{{MData.sudu_kaimosanduan}}</td>
+                  <td>{{MData.zhongzhiweizhi_kaimosanduan}}</td>
+                </tr>
+                <tr>
+                  <td>四段</td>
+                  <td>{{MData.yali_kaimosiduan}}</td>
+                  <td>{{MData.sudu_kaimosiduan}}</td>
+                  <td>{{MData.zhongzhiweizhi_kaimosiduan}}</td>
+                </tr>
+                <tr>
+                  <td>终止</td>
+                  <td>{{MData.yali_kaimozhongzhi}}</td>
+                  <td>{{MData.sudu_kaimozhongzhi}}</td>
+                  <td>{{MData.zhongzhiweizhi_kaimozhongzhi}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <span>托模</span>
+                  </td>
+                  <td>压力</td>
+                  <td>速度</td>
+                  <td>时间</td>
+                  <td>位置</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>进一</td>
+                  <td>{{MData.tuotui1duanyali}}</td>
+                  <td>{{MData.tuojin1duanliuliang}}</td>
+                  <td>{{MData.tuomojinyanchijishi}}</td>
+                  <td>{{MData.tuojin1duanzhongzhiweizhi}}</td>
+                </tr>
+                <tr>
+                  <td>进二</td>
+                  <td>{{MData.tuotui1duanyali}}</td>
+                  <td>{{MData.tuojin2duanliuliang}}</td>
+                  <td></td>
+                  <td>{{MData.tuojin2duanzhongzhiweizhi}}</td>
+                </tr>
+                <tr>
+                  <td>退二</td>
+                  <td>{{MData.tuotui2duanyali}}</td>
+                  <td>{{MData.tuotui2duanliuliang}}</td>
+                  <td></td>
+                  <td>{{MData.tuotui2duanzhongzhiweizhi}}</td>
+                </tr>
+                <tr>
+                  <td>退一</td>
+                  <td>{{MData.tuotui1duanyali}}</td>
+                  <td>{{MData.tuotui1duanliuliang}}</td>
+                  <td>{{MData.tuomotuiyanchijishi}}</td>
+                  <td>{{MData.tuotui1duanzhongzhiweizhi}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <span>注射</span>
+                  </td>
+                  <td>压力</td>
+                  <td>速度</td>
+                  <td>位置</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>一段</td>
+                  <td>{{MData.shechu1duanyali}}</td>
+                  <td>{{MData.shechu1duanliuliang}}</td>
+                  <td>{{MData.shechu1duanzhongzhiweizhi}}</td>
+                </tr>
+                <tr>
+                  <td>二段</td>
+                  <td>{{MData.shechu2duanyali}}</td>
+                  <td>{{MData.shechu2duanliuliang}}</td>
+                  <td>{{MData.shechu2duanzhongzhiweizhi}}</td>
+                </tr>
+                <tr>
+                  <td>三段</td>
+                  <td>{{MData.shechu3duanyali}}</td>
+                  <td>{{MData.shechu3duanliuliang}}</td>
+                  <td>{{MData.shechu3duanzhongzhiweizhi}}</td>
+                </tr>
+                <tr>
+                  <td>四段</td>
+                  <td>{{MData.shechu4duanyali}}</td>
+                  <td>{{MData.shechu4duanliuliang}}</td>
+                  <td>{{MData.shechu4duanzhongzhiweizhi}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <span>保压</span>
+                  </td>
+                  <td>压力</td>
+                  <td>速度</td>
+                  <td>时间</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>一段</td>
+                  <td>{{MData.baoya1duanyali}}</td>
+                  <td>{{MData.baoya1duanliuliang}}</td>
+                  <td>{{MData.baoya1duanjishi}}</td>
+                </tr>
+                <tr>
+                  <td>二段</td>
+                  <td>{{MData.baoya2duanyali}}</td>
+                  <td>{{MData.baoya2duanliuliang}}</td>
+                  <td>{{MData.baoya2duanjishi}}</td>
+                </tr>
+                <tr>
+                  <td>三段</td>
+                  <td>{{MData.baoya3duanyali}}</td>
+                  <td>{{MData.baoya3duanliuliang}}</td>
+                  <td>{{MData.baoya3duanjishi}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <span>储料</span>
+                  </td>
+                  <td>压力</td>
+                  <td>速度</td>
+                  <td>背压</td>
+                  <td>位置</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>一段</td>
+                  <td>{{MData.chuliao1duanyali}}</td>
+                  <td>{{MData.chuliao1duanliuliang}}</td>
+                  <td>{{MData.chuliao1duanbeiyayali}}</td>
+                  <td>{{MData.chuliao1duanzhongzhiweizhi}}</td>
+                </tr>
+                <tr>
+                  <td>二段</td>
+                  <td>{{MData.chuliao2duanyali}}</td>
+                  <td>{{MData.chuliao2duanliuliang}}</td>
+                  <td>{{MData.chuliao2duanbeiyayali}}</td>
+                  <td>{{MData.chuliao1duanzhongzhiweizhi}}</td>
+                </tr>
+                <tr>
+                  <td>三段</td>
+                  <td>{{MData.chuliao3duanyali}}</td>
+                  <td>{{MData.chuliao3duanliuliang}}</td>
+                  <td>{{MData.chuliao3duanbeiyayali}}</td>
+                  <td>{{MData.chuliao1duanzhongzhiweizhi}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <span>温度</span>
+                  </td>
+                  <td>油温</td>
+                  <td>温度1</td>
+                  <td>温度2</td>
+                  <td>温度3</td>
+                  <td>温度4</td>
+                  <td>温度5</td>
+                  <td>温度6</td>
+                  <td>温度7</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>{{MData.wendushedingzhi1}}</td>
+                  <td>{{MData.wendushedingzhi2}}</td>
+                  <td>{{MData.wendushedingzhi3}}</td>
+                  <td>{{MData.wendushedingzhi4}}</td>
+                  <td>{{MData.wendushedingzhi5}}</td>
+                  <td>{{MData.wendushedingzhi6}}</td>
+                  <td>{{MData.wendushedingzhi7}}</td>
+                  <td>{{MData.wendushedingzhi8}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <span>射退</span>
+                  </td>
+                  <td>压力</td>
+                  <td>速度</td>
+                  <td>时间</td>
+                  <td>位置</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>{{MData.shetuiyali}}</td>
+                  <td>{{MData.shetuiliuliang}}</td>
+                  <td>{{MData.chuliaoqianshetuishijian}}</td>
+                  <td>{{MData.shetuizhongzhiweizhi}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="machine_param" *ngIf="!normal">
+        <div class="row">
+          <div class="col-md-4">
+            <table class="table table-striped">
+              <colgroup>
+                <col style="width: 12%;" />
+                <col style="width: 8%;" />
+                <col style="width: 8%;" />
+                <col style="width: 8%;" />
+                <col style="width: 8%;" />
+                <col style="width: 8%;" />
+                <col style="width: 8%;" />
+                <col style="width: 8%;" />
+                <col style="width: 8%;" />
+                <col style="width: 8%;" />
+                <col style="width: 8%;" />
+                <col style="width: 8%;" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <td colspan="2">
+                    <span>关模</span>
+                  </td>
+                  <td colspan="2">一段</td>
+                  <td colspan="2">二段</td>
+                  <td colspan="2">三段</td>
+                  <td colspan="2">低压</td>
+                  <td colspan="2">高压</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="2">位置</td>
+                  <td colspan="2">{{AllData.guanmoweizhi1}}</td>
+                  <td colspan="2">{{AllData.guanmoweizhi2}}</td>
+                  <td colspan="2">{{AllData.guanmoweizhi3}}</td>
+                  <td colspan="2">{{AllData.guanmoweizhi4}}</td>
+                  <td colspan="2">0.00</td>
+                </tr>
+                <tr>
+                  <td>速度</td>
+                  <td colspan="2">{{AllData.guanmosudu1}}</td>
+                  <td colspan="2">{{AllData.guanmosudu2}}</td>
+                  <td colspan="2">{{AllData.guanmosudu3}}</td>
+                  <td colspan="2">{{AllData.guanmosudu4}}</td>
+                  <td colspan="2">{{AllData.guanmosudu5}}</td>
+                  <td colspan="1"></td>
+                </tr>
+                <tr>
+                  <td>计时</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">{{AllData.guanmojishidiya}}</td>
+                  <td colspan="2">{{AllData.guanmojishigaoya}}</td>
+                  <td colspan="1"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table class="table table-striped openModuel">
+              <colgroup>
+                <col style="width: 16%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+                <col style="width: 7%;" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <td>
+                    <span>开模</span>
+                  </td>
+                  <td colspan="2">终止</td>
+                  <td colspan="2">四段</td>
+                  <td colspan="2">三段</td>
+                  <td colspan="2">二段</td>
+                  <td colspan="2">一段</td>
+                  <td colspan="2"></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>位置</td>
+                  <td colspan="2">{{AllData.kaimoweizhi5}}</td>
+                  <td colspan="2">{{AllData.kaimoweizhi4}}</td>
+                  <td colspan="2">{{AllData.kaimoweizhi3}}</td>
+                  <td colspan="2">{{AllData.kaimoweizhi2}}</td>
+                  <td colspan="2">{{AllData.kaimoweizhi1}}</td>
+                  <td colspan="2"></td>
+                </tr>
+                <tr>
+                  <td>速度</td>
+                  <td colspan="1"></td>
+                  <td colspan="2">{{AllData.kaimosudu5}}</td>
+                  <td colspan="2">{{AllData.kaimosudu4}}</td>
+                  <td colspan="2">{{AllData.kaimosudu3}}</td>
+                  <td colspan="2">{{AllData.kaimosudu2}}</td>
+                  <td colspan="2">{{AllData.kaimosudu1}}</td>
+                  <td colspan="1"></td>
+                </tr>
+                <tr>
+                  <td>计时</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">{{AllData.kaimojishi}}</td>
+                  <td colspan="2"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table class="table table-striped">
+              <colgroup>
+                <col style="width: 12%;" />
+                <col style="width: 8.8%;" />
+                <col style="width: 8.8%;" />
+                <col style="width: 8.8%;" />
+                <col style="width: 8.8%;" />
+                <col style="width: 8.8%;" />
+                <col style="width: 8.8%;" />
+                <col style="width: 8.8%;" />
+                <col style="width: 8.8%;" />
+                <col style="width: 8.8%;" />
+                <col style="width: 8.8%;" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <td>
+                    <span>托模</span>
+                  </td>
+                  <td></td>
+                  <td colspan="2">进一</td>
+                  <td colspan="2">进二</td>
+                  <td colspan="2">退一</td>
+                  <td colspan="2">退二</td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>终止位置</td>
+                  <td></td>
+                  <td colspan="2">{{AllData.tuojinweizhi1}}</td>
+                  <td colspan="2">{{AllData.tuojinweizhi2}}</td>
+                  <td colspan="2">{{AllData.tuotuiweizhi1}}</td>
+                  <td colspan="2">{{AllData.tuotuiweizhi2}}</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>首次行程</td>
+                  <td></td>
+                  <td colspan="2">{{AllData.tuojinxingcheng1}}</td>
+                  <td colspan="2">{{AllData.tuojinxingcheng2}}</td>
+                  <td colspan="2">{{AllData.tuotuixingcheng1}}</td>
+                  <td colspan="2">{{AllData.tuotuixingcheng2}}</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="linehead">速度</td>
+                  <td colspan="2">{{AllData.tuojinsudu1}}</td>
+                  <td colspan="2">{{AllData.tuojinsudu2}}</td>
+                  <td colspan="2"></td>
+                  <td colspan="2">{{AllData.tuotuisudu1}}</td>
+                  <td colspan="2">{{AllData.tuotuisudu2}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <span>保压</span>
+
+                    <td>三段</td>
+                    <td>二段</td>
+                    <td>一段</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>时间</td>
+
+                  <td>{{AllData.baoyashijian3}}</td>
+                  <td>{{AllData.baoyashijian2}}</td>
+                  <td>{{AllData.baoyashijian1}}</td>
+                </tr>
+                <tr>
+                  <td>压力</td>
+
+                  <td>{{AllData.baoyayali3}}</td>
+                  <td>{{AllData.baoyayali2}}</td>
+                  <td>{{AllData.baoyayali1}}</td>
+                </tr>
+                <tr>
+                  <td>速度</td>
+                  <td></td>
+                  <td></td>
+                  <td>{{AllData.baoyasudu}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <table class="table table-striped openModuel">
+              <colgroup>
+                <col style="width: 16%;" />
+                <col style="width: 18%;" />
+                <col style="width: 6%;" />
+                <col style="width: 6%;" />
+                <col style="width: 6%;" />
+                <col style="width: 6%;" />
+                <col style="width: 6%;" />
+                <col style="width: 6%;" />
+                <col style="width: 12%;" />
+                <col style="width: 12%;" />
+                <col style="width: 6%;" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <td>
+                    <span>储料</span>
+                  </td>
+                  <td colspan="2">前射退</td>
+                  <td colspan="2">一段</td>
+                  <td colspan="2">二段</td>
+                  <td colspan="2">三段</td>
+                  <td colspan="2">后射退</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>位置</td>
+                  <td colspan="2">{{AllData.chuliaoweizhi0}}</td>
+                  <td colspan="2">{{AllData.chuliaoweizhi1}}</td>
+                  <td colspan="2">{{AllData.chuliaoweizhi2}}</td>
+                  <td colspan="2">{{AllData.chuliaoweizhi3}}</td>
+                  <td colspan="2">{{AllData.chuliaoweizhi4}}</td>
+                </tr>
+                <tr>
+                  <td>背压</td>
+                  <td colspan="1"></td>
+                  <td colspan="2">{{AllData.chuliaobeiya1}}</td>
+                  <td colspan="2">{{AllData.chuliaobeiya2}}</td>
+                  <td colspan="2">{{AllData.chuliaobeiya3}}</td>
+                  <td colspan="3"></td>
+                </tr>
+                <tr>
+                  <td>速度</td>
+                  <td colspan="1">{{AllData.chuliaosudu0}}</td>
+                  <td colspan="2">{{AllData.chuliaosudu1}}</td>
+                  <td colspan="2">{{AllData.chuliaosudu2}}</td>
+                  <td colspan="2">{{AllData.chuliaosudu3}}</td>
+                  <td></td>
+                  <td colspan="2">{{AllData.chuliaosudu4}}</td>         
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-2">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <table class="table table-striped">
+              <colgroup>
+                <col style="width: 10%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+                <col style="width: 7.5%;" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <td>
+                    <span>射出</span>
+                  </td>
+                  <td colspan="2">转保压</td>
+                  <td colspan="2">四段</td>
+                  <td colspan="2">三段</td>
+                  <td colspan="2">二段</td>
+                  <td colspan="2">一段</td>
+                  <td colspan="2">起始</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>位置</td>
+                  <td colspan="2">{{AllData.shechuweizhi5}}</td>
+                  <td colspan="2">{{AllData.shechuweizhi4}}</td>
+                  <td colspan="2">{{AllData.shechuweizhi3}}</td>
+                  <td colspan="2">{{AllData.shechuweizhi2}}</td>
+                  <td colspan="2">{{AllData.shechuweizhi1}}</td>
+                  <td colspan="2">{{AllData.shechuweizhi1}}</td>
+                </tr>
+                <tr>
+                  <td>速度</td>
+                  <td colspan="1"></td>
+                  <td colspan="2">{{AllData.shechusudu5}}</td>
+                  <td colspan="2">{{AllData.shechusudu4}}</td>
+                  <td colspan="2">{{AllData.shechusudu3}}</td>
+                  <td colspan="2">{{AllData.shechusudu2}}</td>
+                  <td colspan="2">{{AllData.shechusudu1}}</td>
+                  <td colspan="1"></td>
+                </tr>
+                <tr>
+                  <td>压力</td>
+                  <td colspan="1"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">{{AllData.shechuyali}}</td>
+                  <td colspan="1"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <td>
+                  <span>温度</span>
+                </td>
+                <td>油温</td>
+                <td>温度1</td>
+                <td>温度2</td>
+                <td>温度3</td>
+                <td>温度4</td>
+                <td>温度5</td>
+                <td>温度6</td>
+                <td>温度7</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>&nbsp;</td>
+                <td>{{AllData.wendushedingzhi1}}</td>
+                <td>{{AllData.wendushedingzhi2}}</td>
+                <td>{{AllData.wendushedingzhi3}}</td>
+                <td>{{AllData.wendushedingzhi4}}</td>
+                <td>{{AllData.wendushedingzhi5}}</td>
+                <td>{{AllData.wendushedingzhi6}}</td>
+                <td>{{AllData.wendushedingzhi7}}</td>
+                <td>{{AllData.wendushedingzhi8}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="machine_set">
+        <table class="table table-striped" *ngIf="normal">
+          <thead>
+            <tr>
+              <td>
+                <span>机器配置</span>
+              </td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>
+                <font>code0:</font>{{MData.Code0}}</td>
+              <td>
+                <font>code7:</font>{{MData.Code7}}</td>
+              <td>
+                <font>压力上限:</font>{{MData.xitongyalishangxian}}</td>
+              <td>
+                <font>code50:</font>{{MData.Code50}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>code1:</font>{{MData.Code1}}</td>
+              <td>
+                <font>油路控制:</font>{{MData.Code8}}</td>
+              <td>
+                <font>code16:</font>{{MData.Code44}}</td>
+              <td>
+                <font>code51:</font>{{MData.Code51}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>code2:</font>{{MData.Code2}}</td>
+              <td>
+                <font>温度控制:</font>{{MData.Code9}}</td>
+              <td>
+                <font>储料RPM孔数:</font>{{MData.chuliaoRPMkongshu}}</td>
+              <td>
+                <font>code52:</font>{{MData.Code52}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>code3:</font>{{MData.Code3}}</td>
+              <td>
+                <font>位置尺控制:</font>{{MData.Code10}}</td>
+              <td>
+                <font>推力座的型号:</font>{{MData.tuilizuoxinghao}}</td>
+              <td>
+                <font>code53:</font>{{MData.Code53}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>code4:</font>{{MData.Code4}}</td>
+              <td>
+                <font>code11:</font>{{MData.Code11}}</td>
+              <td>
+                <font>code43:</font>{{MData.Code43}}</td>
+              <td>
+                <font>code54:</font>{{MData.Code54}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>code5:</font>{{MData.Code5}}</td>
+              <td>
+                <font>code12:</font>{{MData.Code12}}</td>
+              <td>
+                <font>code48:</font>{{MData.Code48}}</td>
+              <td>
+                <font>国际:</font>{{MData.guobiao}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>厂商代码:</font>{{MData.Code6}}</td>
+              <td>
+                <font>系统代码:</font>{{MData.Code13}}</td>
+              <td>
+                <font>code49:</font>{{MData.Code49}}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-striped" *ngIf="!normal">
+          <thead>
+            <tr>
+              <td>
+                <span>机器配置</span>
+              </td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>
+                <font>code0:</font>{{AllData.Code0}}</td>
+              <td>
+                <font>code7:</font>{{AllData.Code7}}</td>
+              <td>
+                <font>压力上限:</font>{{AllData.xitongyalishangxian}}</td>
+              <td>
+                <font>code50:</font>{{AllData.Code50}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>code1:</font>{{AllData.Code1}}</td>
+              <td>
+                <font>油路控制:</font>{{AllData.Code8}}</td>
+              <td>
+                <font>code16:</font>{{AllData.Code44}}</td>
+              <td>
+                <font>code51:</font>{{AllData.Code51}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>code2:</font>{{AllData.Code2}}</td>
+              <td>
+                <font>温度控制:</font>{{AllData.Code9}}</td>
+              <td>
+                <font>储料RPM孔数:</font>{{AllData.chuliaoRPMkongshu}}</td>
+              <td>
+                <font>code52:</font>{{AllData.Code52}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>code3:</font>{{AllData.Code3}}</td>
+              <td>
+                <font>位置尺控制:</font>{{AllData.Code10}}</td>
+              <td>
+                <font>推力座的型号:</font>{{AllData.tuilizuoxinghao}}</td>
+              <td>
+                <font>code53:</font>{{AllData.Code53}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>code4:</font>{{AllData.Code4}}</td>
+              <td>
+                <font>code11:</font>{{AllData.Code11}}</td>
+              <td>
+                <font>code43:</font>{{AllData.Code43}}</td>
+              <td>
+                <font>code54:</font>{{AllData.Code54}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>code5:</font>{{AllData.Code5}}</td>
+              <td>
+                <font>code12:</font>{{AllData.Code12}}</td>
+              <td>
+                <font>code48:</font>{{AllData.Code48}}</td>
+              <td>
+                <font>国际:</font>{{AllData.guobiao}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <font>厂商代码:</font>{{AllData.Code6}}</td>
+              <td>
+                <font>系统代码:</font>{{AllData.Code13}}</td>
+              <td>
+                <font>code49:</font>{{AllData.Code49}}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <app-search-machineid (monitoridEvent)="getMonitorEvent($event)"></app-search-machineid>
+    </div>
+  </div>
+</div>

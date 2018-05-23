@@ -1,0 +1,32 @@
+<div class="timelyTemperature">
+  <navigation [name]="navigations"></navigation>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row temperatrue">
+        <div class="current_temperature col-sm-2">
+          <h4>当前温度</h4>
+          <ul>
+            <li><span>油温(℃):</span>{{current_temp.temp_0}}</li>
+            <li><span>温度1(℃):</span>{{current_temp.temp_1}}</li>
+            <li><span>温度2(℃):</span>{{current_temp.temp_2}}</li>
+            <li><span>温度3(℃):</span>{{current_temp.temp_3}}</li>
+            <li><span>温度4(℃):</span>{{current_temp.temp_4}}</li>
+            <li><span>温度5(℃):</span>{{current_temp.temp_5}}</li>
+            <li><span>温度6(℃):</span>{{current_temp.temp_6}}</li>
+            <li><span>温度7(℃):</span>{{current_temp.temp_7}}</li>
+          </ul>
+        </div>
+        <div class="temperatrue_record col-sm-10">
+          <module-table [module_table_thead]="module_table_thead" [module_table_tbody]="module_table_body" [module_table_attr]="module_table_attr" [module_table_search]="module_table_search"></module-table>
+        </div>
+      </div>
+      <div class="temperatrue_table">
+        <div id="temperatrue_table">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <app-search-machineid (monitoridEvent)="getMonitorEvent($event)"></app-search-machineid>
+    </div>
+  </div>
+</div>

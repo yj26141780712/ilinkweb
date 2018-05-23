@@ -1,0 +1,46 @@
+<form [formGroup]="companyForm" (ngSubmit)="submit(companyForm.value)">
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{title}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="companyName"><i>*</i>公司名称：</label>
+            <div class="col-sm-6">
+                <input type="text" name="companyName" class="form-control" formControlName="companyName">
+            </div>
+            <label *ngIf="formErrors.companyName" class="form-control-label col-sm-3 text-danger pl-0">
+                {{formErrors.companyName}}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="companyAddress"><i>*</i>公司地址：</label>
+            <div class="col-sm-6">
+                <input type="text" name="companyAddress" class="form-control" formControlName="companyAddress">
+            </div>
+            <label *ngIf="formErrors.companyAddress" class="form-control-label col-sm-3 text-danger pl-0">
+              {{formErrors.companyAddress}}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="phone"><i>*</i>联系电话</label>
+            <div class="col-sm-6">
+                <input type="text" name="phone" class="form-control" formControlName="phone">
+            </div>
+            <label *ngIf="formErrors.phone" class="form-control-label col-sm-3 text-danger pl-0">
+              {{formErrors.phone}}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="remark">备注信息：</label>
+            <div class="col-sm-6">
+                <input type="text" name="remark" class="form-control" formControlName="remark">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-sm btn-primary" [disabled]="!this.companyForm.valid" value="提交">
+    </div>
+</form>

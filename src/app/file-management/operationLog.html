@@ -1,0 +1,10 @@
+<div class="operaionLog">
+  <navigation [name]="navigations"></navigation>
+  <div class="operaionLog_searchTime">
+    查询时间：<input type="date">-<input type="date"> 用户名：<select name="" id=""><option>全部用户</option></select>
+    网页名称:<select name="" id=""><option>全部网页</option></select><button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i>查询</button>
+  </div>
+  <div class="operaionLog_content">
+    <module-table [module_table_thead]="module_table_thead" [module_table_tbody]="module_table_body" [module_table_attr]="module_table_attr" [module_table_type]="module_table_type"></module-table>
+  </div>
+</div>

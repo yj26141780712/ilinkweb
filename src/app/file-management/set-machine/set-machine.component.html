@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">配置拥有机型</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="module-table">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <td *ngFor="let key of settings.column | keys">
+            <input *ngIf="settings.column[key].type=='checkbox'" type="checkbox" (click)="selectAll($event.target.checked)" [checked]="isAllCheck()"> {{ settings.column[key].title }}
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td *ngFor="let key of settings.column | keys">
+            <input *ngIf="settings.column[key].type=='checkbox'" type="checkbox" value="{{item[key]}}" (click)="selectOne($event.target.checked,item)"
+              [checked]="isCheck(item)"> {{!settings.column[key].type?item[key]:''}}
+          </td>
+        </tr>
+        <tr *ngIf="!data.length">
+          <td [attr.colspan]="3" class="dataTables_empty">
+            表中数据为空
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal-footer">
+  <input type="button" class="btn btn-sm btn-primary" value="确定" (click)="comfirm()">
+  <input type="button" class="btn btn-sm" value="取消" (click)="close()">
+</div>

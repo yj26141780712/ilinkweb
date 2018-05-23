@@ -1,0 +1,70 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">配件详情</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="module-table">
+    <div class="module-table-header">
+      <p>
+        显示
+        <select [(ngModel)]="tbody_show_count" (change)="changeCount()">
+          <option>10</option>
+          <option>20</option>
+          <option>50</option>
+        </select>项结果
+      </p>
+      <!-- <div>搜索:
+        <input type="text" id="searchAttribute" (keyup)="searchAttr(search)" #search>
+      </div> -->
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <td (click)="sort(num)" *ngFor="let item of module_table_thead;let num=index">{{item}}
+            <i class="fa fa-sort" aria-hidden="true" *ngIf="sort_show"></i>
+            <i class="fa fa-sort-asc" aria-hidden="true"></i>
+            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+          </td>
+          <td>
+            <button class="btn btn-default" (click)="add()">添加</button>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let content of page_data;let num=index">
+          <td *ngFor='let attr of module_table_attr'>{{content[attr]}}</td>
+          <td>
+            <i class="fa fa-pencil" aria-hidden="true" (click)="edit(num)" title="编辑"></i>
+            <i class="fa fa-trash" aria-hidden="true" title="删除" (click)="delete(num)"></i>
+          </td>
+        </tr>
+        <tr>
+          <td [attr.colspan]="module_table_thead.length+1" class="dataTables_empty">
+            表中数据为空
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="module-table-footer">
+      <p>显示第
+        <span>{{beginNum}}</span>到
+        <span>{{endNum}}</span>项结果，共
+        <span>{{total_count}}</span>项</p>
+      <div class="btn-group">
+        <button class="btn btn-default" (click)="prev()">上页</button>
+        <button class="btn btn-default" (click)='page(btn1)' #btn1 [ngClass]="{'btn-select':current_page==1}">1</button>
+        <button class="btn btn-default" *ngIf="pages>1" (click)='page(btn2)' #btn2 [ngClass]="{'btn-select':current_page==2}">2</button>
+        <button class="btn btn-default" *ngIf="pages>2" (click)='page(btn3)' #btn3 [ngClass]="{'btn-select':current_page==3}">3</button>
+        <button class="btn btn-default" *ngIf="pages==4" (click)='page(btn4)' #btn4 [ngClass]="{'btn-select':current_page==4}">4</button>
+        <button class="btn btn-default" *ngIf="pages>4">...</button>
+        <button class="btn btn-default" *ngIf="current_page>=4&&current_page<(pages-1)" [ngClass]="{'btn-select':current_page>=4}">{{current_page}}</button>
+        <button class="btn btn-default" *ngIf="current_page<(pages-1)&&current_page>=4">...</button>
+        <button class="btn btn-default" *ngIf="current_page==(pages-1)&&current_page>4" [ngClass]="{'btn-select':current_page==(pages-1)}">{{pages-1}}</button>
+        <button class="btn btn-default" *ngIf="pages>4" (click)='page(btn5)' #btn5 [ngClass]="{'btn-select':current_page==pages}">{{pages}}</button>
+        <button class="btn btn-default" (click)="next()">下页</button>
+      </div>
+    </div>
+  </div>
+</div>
