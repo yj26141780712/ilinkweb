@@ -9,7 +9,7 @@
         <div class="form-group row">
             <label class="form-control-label text-right col-sm-3" for="machineCode"><i>*</i>注塑机编号：</label>
             <div class="col-sm-6">
-                <input type="text" name="machineCode" class="form-control" formControlName="machineCode" placeholder="注塑机编号">
+                <input type="text" name="machineCode" class="form-control" formControlName="machineCode" placeholder="">
             </div>
             <label class="form-control-label col-sm-3 text-danger pl-0">
                 {{formErrors.machineCode}}
@@ -18,7 +18,7 @@
         <div class="form-group row">
             <label class="form-control-label text-right col-sm-3" for="machineName"><i>*</i>注塑机名称：</label>
             <div class="col-sm-6">
-                <input type="text" name="machineName" class="form-control" formControlName="machineName" placeholder="注塑机名称">
+                <input type="text" name="machineName" class="form-control" formControlName="machineName" placeholder="">
             </div>
             <label class="form-control-label col-sm-3 text-danger pl-0 ">
                 {{formErrors.machineName}}
@@ -27,7 +27,7 @@
         <div class="form-group row">
             <label class="form-control-label text-right col-sm-3" for="machineType"><i>*</i>注塑机类型：</label>
             <div class="col-sm-6">
-                <input type="text" name="machineType" class="form-control" formControlName="machineType" placeholder="注塑机类型">
+                <input type="text" name="machineType" class="form-control" formControlName="machineType" placeholder="">
             </div>
             <label class="form-control-label col-sm-3 text-danger pl-0">
                 {{formErrors.machineType}}
@@ -36,7 +36,7 @@
         <div class="form-group row">
             <label class="form-control-label text-right col-sm-3" for="moniterId"><i>*</i>采集器编号：</label>
             <div class="col-sm-6">
-                <input type="text" name="moniterId" class="form-control" formControlName="moniterId" placeholder="采集器编号" (keyup)="moniterIdKeyup($event)">
+                <input type="text" name="moniterId" class="form-control" formControlName="moniterId" placeholder="" (keyup)="moniterIdKeyup($event)">
             </div>
             <label *ngIf="formBlurCheckErrors.moniterId||formErrors.moniterId" class="form-control-label col-sm-3 text-danger pl-0 ">
                 {{formBlurCheckErrors.moniterId||formErrors.moniterId}}
@@ -45,13 +45,13 @@
         <div class="form-group row">
             <label class="form-control-label text-right col-sm-3" for="outFactoryPerson">出厂调试人员：</label>
             <div class="col-sm-6">
-                <input type="text" name="outFactoryPerson" class="form-control" formControlName="outFactoryPerson" placeholder="出厂调试人员">
+                <input type="text" name="outFactoryPerson" class="form-control" formControlName="outFactoryPerson" placeholder="">
             </div>
         </div>
         <div class="form-group row">
             <label class="form-control-label text-right col-sm-3" for="outFactoryDate"><i>*</i>出厂日期：</label>
             <div class="col-sm-6">
-                <input type="date" name="outFactoryDate" class="form-control" formControlName="outFactoryDate" placeholder="出厂日期">
+                <input type="date" name="outFactoryDate" class="form-control" formControlName="outFactoryDate" placeholder="">
             </div>
             <label class="form-control-label col-sm-3 text-danger pl-0 ">
                 {{formErrors.outFactoryDate}}
@@ -82,7 +82,7 @@
         <div class="form-group row">
             <label class="form-control-label text-right col-sm-3" for="gpsInfo">GPS信息：</label>
             <div class="col-sm-4 pr-0">
-                <input type="text" name="gpsInfo" class="form-control" formControlName="gpsInfo" placeholder="GPS信息">
+                <input type="text" name="gpsInfo" class="form-control" formControlName="gpsInfo" placeholder="">
             </div>
             <div class="col-sm-2 pl-0">
                 <a target="_blank" href="http://api.map.baidu.com/lbsapi/getpoint/index.html" class="btn btn-primary">拾取</a>
@@ -105,7 +105,7 @@
         <div class="form-group row">
             <label class="form-control-label text-right col-sm-3" for="remark">备注信息：</label>
             <div class="col-sm-6">
-                <input type="text" name="remark" class="form-control" formControlName="remark" placeholder="备注">
+                <input type="text" name="remark" class="form-control" formControlName="remark" placeholder="">
             </div>
             <label class="form-control-label col-sm-3 text-danger pl-0 ">
             

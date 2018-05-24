@@ -3,6 +3,7 @@ import { Headers, Http, Response, RequestOptions } from '@angular/http';
 
 import { NavigationComponent } from './navigation';
 import { Global, GlobalService } from '../tools/services/global';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-produce-list',
   templateUrl: './produce-list.component.html',
@@ -17,14 +18,14 @@ export class ProduceListComponent implements OnInit {
   current_page: number = 1;//当前页数
   total_page: number;//总页数
   navigations: Array<string> = ['主页', '监控管理', '机器图表'];
-  constructor(private gs: GlobalService) {
+  constructor(private gs: GlobalService, private router: Router) {
 
   }
 
   ngOnInit() {
     this.getMachineCount(() => {
       for (var i = 0; i < this.data.length; i++) {
-        var item = { name: '', sn: "", workstate: "", action: "", motor: "", electricHeat: "", modelNum: "", totalNum: "", fulltime: "", workhour: "", className: "" }
+        var item = { name: '', sn: "", workstate: "", action: "", motor: "", electricHeat: "", modelNum: "", totalNum: "", fulltime: "", workhour: "", className: "", monitorid: "" }
         item.name = this.data[i].name;
         item.sn = this.data[i].sn;
         item.workstate = this.data[i].workstate;
@@ -34,6 +35,7 @@ export class ProduceListComponent implements OnInit {
         item.totalNum = this.data[i].totalNum;
         item.fulltime = this.data[i].fulltime.toFixed(1);
         item.workhour = this.data[i].workhour;
+        item.monitorid = this.data[i].monitorid;
         switch (this.data[i].workstate) {
           case "手动": // add by yangjie 2018-04-26
           case "停机":
@@ -97,5 +99,10 @@ export class ProduceListComponent implements OnInit {
   last() {
     this.current_page = this.total_page;
     this.page_data = this.machine_list(this.current_page);
+  }
+
+  click(item) {
+    console.log(item);
+    this.router.navigate(['home/message'], { queryParams: { mid: item.monitorid } });
   }
 }

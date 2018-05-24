@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NavigationComponent } from '../produce-list/navigation';
 import { Headers, Http, Response, RequestOptions } from '@angular/http';
@@ -237,11 +238,14 @@ export class ParamMessage implements OnInit {
   ["wendushedingzhi7", "0x05130006"],
   ["wendushedingzhi8", "0x05130007"]];
   navigations: Array<string> = ['主页', '远程控制', '参数配置'];
-  constructor(private gs: GlobalService) {
+  constructor(private gs: GlobalService,private route:ActivatedRoute) {
 
   }
 
   ngOnInit() {
+    let monitor = this.route.queryParams.subscribe(params => {
+      this.current_mid = params['mid'];
+    })
   }
   getParamData() {
     this.gs.httpGet(Global.domain + 'api/deviceInfo.action?mid=' + this.current_mid, {}, json => {

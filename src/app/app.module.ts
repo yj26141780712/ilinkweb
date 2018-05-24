@@ -16,7 +16,7 @@ import { ModalModule } from 'ngx-bootstrap';
   declarations: [
     AppComponent,
     iLinklogin,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

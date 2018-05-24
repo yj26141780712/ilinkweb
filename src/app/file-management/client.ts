@@ -1,7 +1,10 @@
+import { ClientService } from './../tools/services/client.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Global, GlobalService } from './../tools/services/global';
 import { Component, OnInit } from '@angular/core';
 import { NavigationComponent } from '../produce-list/navigation';
-import { Headers, Http, Response, RequestOptions } from '@angular/http';
+import { ClientFormComponent } from './client-form/client-form.component';
+
 @Component({
   selector: 'Client',
   templateUrl: './client.html',
@@ -9,54 +12,89 @@ import { Headers, Http, Response, RequestOptions } from '@angular/http';
 })
 export class Client implements OnInit {
   companyId: any;
-  data: any;
   navigations: Array<string> = ['主页', '档案管理', '客户管理'];
-  module_table_thead: Array<string> = ['塑料厂ID', '塑料厂名称', '添加时间', '备注信息', '状态'];
-  module_table_body: Array<Object> = [];
-  module_table_attr: Array<string> = ['id', 'name', 'time', 'note', 'status'];
-  module_table_type: string = "client";
-  module_table_search = { search: "id", name: "塑料厂id" }
-  constructor(private gs: GlobalService) {
+  bsModalRef: BsModalRef;
+  settings: any;
+  source: any[];
+  operationObj: any;
+  constructor(private gs: GlobalService,
+    private cs: ClientService,
+    private modalService: BsModalService) {
 
   }
 
   ngOnInit() {
     this.companyId = localStorage.getItem('companyId');
-    this.getClientData(() => {
-      var array = [];
-      for (var i = 0; i < this.data.length; i++) {
-        var item = { id: '', name: '', time: '', note: '', status: '', clientid: "" };
-        item.id = this.data[i].clientId;
-        item.name = this.data[i].clientName;
-        item.time = this.data[i].addDate;
-        item.note = this.data[i].note;
-        item.status = this.data[i].status;
-        item.clientid = this.data[i].id;
-        array.push(item);
-      }
-      this.module_table_body = [].concat(array);
+    this.addSubmitObservers();
+    this.createOperation()
+    this.bindSettings();
+    this.bindSource();
+  }
+
+  addSubmitObservers() {
+    this.cs.clientSubject.subscribe(() => {
+      this.bindSource();
     });
   }
-  getClientData(callback) {
-    this.gs.httpGet(Global.domain + 'api/apishowClients.action?companyId=' + this.companyId, {}, json => {
-      this.data = json.obj;
-      callback();
-    })
+
+  operation() {
+
   }
-  getClient(msg) {//获取到添加成功或者修改的成功指令
-    this.getClientData(() => {
-      var array = [];
-      for (var i = 0; i < this.data.length; i++) {
-        var item = { id: '', name: '', time: '', note: '', status: '', clientid: "" };
-        item.id = this.data[i].clientId;
-        item.name = this.data[i].clientName;
-        item.time = this.data[i].addDate;
-        item.note = this.data[i].note;
-        item.status = this.data[i].status;
-        item.clientid = this.data[i].id;
-        array.push(item);
+
+  createOperation() {
+    let self = this;
+    this.operation.prototype.edit = item => {
+      let initialState = { item: item };
+      self.bsModalRef = self.modalService.show(ClientFormComponent, { initialState });
+    }
+    this.operation.prototype.delete = item => {
+      self.gs.confirmDel().then(value => {
+        if (value) {
+          self.cs.deleteClient(item.id);
+        }
+      });
+    }
+    this.operationObj = new this.operation();
+  }
+
+  bindSettings() {
+    this.settings = {
+      columns: [
+        { field: 'clientCode', title: '塑料厂ID' },
+        { field: 'clientName', title: '塑料厂名称' },
+        { field: 'createTime', title: '添加时间' },
+        { field: 'remark', title: '备注信息' },
+        { field: 'clientState', title: '状态' },
+      ],
+      operation: [
+        { type: 'edit', iconClass: 'fa-pencil', title: "编辑", callBack: this.operationObj.edit },
+        { type: 'delete', iconClass: 'fa-trash', title: "删除", callBack: this.operationObj.delete },
+      ],
+      search: { search: "clientCode", name: "塑料厂ID" },
+    }
+  }
+
+  bindSource() {
+    this.cs.getClientList(this.companyId).subscribe(json => {
+      if (json.code == 200) {
+        let data = json.obj;
+        var array = [];
+        for (var i = 0; i < data.length; i++) {
+          var item: any = {};
+          item.clientCode = data[i].clientId;
+          item.clientName = data[i].clientName;
+          item.createTime = data[i].addDate;
+          item.remark = data[i].note;
+          item.clientState = data[i].status;
+          item.id = data[i].id;
+          array.push(item);
+        }
+        this.source = [].concat(array);
       }
-      this.module_table_body = [].concat(array);
     });
+  }
+
+  add() {
+    this.bsModalRef = this.modalService.show(ClientFormComponent);
   }
 }

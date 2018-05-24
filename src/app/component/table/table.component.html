@@ -29,8 +29,16 @@
             <tr *ngFor="let content of page_data;let num=index">
                 <td *ngFor='let attr of module_table_attr'>{{content[attr]}}</td>
                 <td *ngIf="isfunction">
-                    <i href *ngFor="let op of operations" class="fa" [ngClass]="op.iconClass" [title]="op.title" (click)="opClick($event,op,content)">
-                    </i>
+                    <ng-container href *ngFor="let op of operations">
+                        <ng-container *ngIf="!op.show">
+                            <i class="fa" [ngClass]="op.iconClass" [title]="op.title" (click)="opClick($event,op,content)">
+                            </i>
+                        </ng-container>
+                        <ng-container *ngIf="op.show">
+                            <i *ngIf="op.show==content.isShow" class="fa" [ngClass]="op.iconClass" [title]="op.title" (click)="opClick($event,op,content)">
+                            </i>
+                        </ng-container>
+                    </ng-container>
                 </td>
             </tr>
         </tbody>

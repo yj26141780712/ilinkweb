@@ -61,7 +61,7 @@ export class MachineFormComponent implements OnInit {
     },
   };
   item: any;
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
     private bsModalRef: BsModalRef,
     private modalService: BsModalService,
     private gs: GlobalService,
@@ -73,7 +73,6 @@ export class MachineFormComponent implements OnInit {
     this.companyId = localStorage.getItem('companyId')
     this.luser = localStorage.getItem('id');
     this.item = this.modalService.config.initialState['item'];
-    if (this.item) this.title = "编辑注塑机";
     this.bindData();
     this.bindSelect();
   }
@@ -96,7 +95,7 @@ export class MachineFormComponent implements OnInit {
     });
     //注册表单值变化校验事件
     this.machineForm.valueChanges.subscribe(data => {
-      this.gs.checkErrors(this,'machineForm');
+      this.gs.checkErrors(this, 'machineForm');
     });
   }
 
@@ -144,7 +143,7 @@ export class MachineFormComponent implements OnInit {
    */
   bindData() {
     if (this.item) {
-      console.log(this.item);
+      this.title = "编辑注塑机";
       this.machineForm.reset(this.item);
     }
   }

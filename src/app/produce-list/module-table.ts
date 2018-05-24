@@ -1236,8 +1236,8 @@ export class ModuleTable implements OnInit {
     console.log(_trs);
     let _html = `
       <div class="modal-header">
+        <h4 class="blue bigger pull-left">成品详情</h4>
         <button type="button" class="close" id="showAllDataClose">×</button>
-        <h4 class="blue bigger text-left">成品详情</h4>
       </div>
       <div class="modal-body no-padding">
           <table class="table table-striped table-condensed table-hover">

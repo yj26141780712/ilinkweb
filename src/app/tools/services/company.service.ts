@@ -59,4 +59,31 @@ export class CompanyService {
       'companyId': companyId
     });
   }
+
+  /**
+   * 获取代理公司管理员信息
+   * @param companyId 代理公司Id
+   */
+  findAdmin(companyId: string) {
+    return this.gs.httpGetObservable(Global.domain + 'api/apifindAdmin.action', {
+      companyId: companyId
+    });
+  }
+
+  /**
+   * 
+   * @param companyId 代理公司Id
+   * @param userId 管理员Id
+   * @param obj 管理员信息数据对象
+   */
+  editAdmin(companyId: string, userId: string, obj) {
+    return this.gs.httpGetObservable(Global.domain + 'api/apieditAdmin.action', {
+      'user.username': obj.userName,
+      'user.name': obj.name,
+      'user.note': obj.remark,
+      'user.phone': obj.phone,
+      'user.companyid': companyId,
+      'user.id': userId
+    });
+  }
 }

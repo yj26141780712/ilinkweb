@@ -1,3 +1,4 @@
+import { SetFactoryComponent } from './set-factory/set-factory.component';
 import { MachineService } from './../tools/services/machine.service';
 import { MachineFormComponent } from './machine-form/machine-form.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
@@ -50,13 +51,19 @@ export class Machine implements OnInit {
       self.bsModalRef = self.modalService.show(MachineFormComponent, { initialState });
     }
     this.operation.prototype.delete = (item) => {
-      self.gs.confirm().then(value => {
+      self.gs.confirmDel().then(value => {
         if (value) {
           self.ms.delDevice(self.companyId, item.id).subscribe(json => {
             self.bindSource();
           });
         }
       });
+    }
+    this.operation.prototype.setFactory = item => {
+      let initialState = {
+        item: item
+      }
+      self.bsModalRef = self.modalService.show(SetFactoryComponent, { initialState });
     }
     this.operationObj = new this.operation();
   }
@@ -83,6 +90,7 @@ export class Machine implements OnInit {
       operation: [
         { type: 'edit', iconClass: 'fa-pencil', title: "编辑", callBack: this.operationObj.edit },
         { type: 'delete', iconClass: 'fa-trash', title: "删除", callBack: this.operationObj.delete },
+        { type: 'setFactory', iconClass: 'fa-usd', title: "指定塑料厂", callBack: this.operationObj.setFactory },
       ],
       search: { search: "machineCode", name: "注塑机编号" },
     }

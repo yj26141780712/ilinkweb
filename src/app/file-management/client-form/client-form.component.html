@@ -1,0 +1,49 @@
+<form [formGroup]="clientForm" (ngSubmit)="submit(clientForm.value)">
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{title}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="clientCode"><i>*</i>编号：</label>
+            <div class="col-sm-6">
+                <input type="text" name="clientCode" class="form-control" formControlName="clientCode" [readonly]="item">
+            </div>
+            <label *ngIf="formErrors.clientCode" class="form-control-label col-sm-3 text-danger pl-0">
+                {{formErrors.clientCode}}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="clientName"><i>*</i>名称：</label>
+            <div class="col-sm-6">
+                <input type="text" name="clientName" class="form-control" formControlName="clientName">
+            </div>
+            <label *ngIf="formErrors.clientName" class="form-control-label col-sm-3 text-danger pl-0">
+                {{formErrors.clientName}}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="clientState"><i>*</i>状态：</label>
+            <div class="col-sm-6">
+                <select name="clientState" class="form-control" formControlName="clientState">
+                  <option value="0">正常</option>
+                  <option value="1">停用</option>
+                </select>
+            </div>
+            <label *ngIf="formErrors.clientState" class="form-control-label col-sm-3 text-danger pl-0">
+                {{formErrors.clientState}}
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="form-control-label text-right col-sm-3" for="remark">备注：</label>
+            <div class="col-sm-6">
+                <input type="text" name="remark" class="form-control" formControlName="remark">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-sm btn-primary" [disabled]="!this.clientForm.valid" value="提交">
+    </div>
+</form>

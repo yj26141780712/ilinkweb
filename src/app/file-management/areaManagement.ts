@@ -50,7 +50,7 @@ export class AreaManagement implements OnInit {
       self.bsModalRef = self.modalService.show(AreaFormComponent, { initialState });
     }
     this.operation.prototype.delete = (item) => {
-      self.gs.confirm().then(value => {
+      self.gs.confirmDel().then(value => {
         if (value) {
           self.as.deleteArea(item.id).subscribe(json => {
             if (json.code == 200) {
@@ -73,7 +73,7 @@ export class AreaManagement implements OnInit {
         { type: 'edit', iconClass: 'fa-pencil', title: "编辑", callBack: this.operationObj.edit },
         { type: 'delete', iconClass: 'fa-trash', title: "删除", callBack: this.operationObj.delete },
       ],
-      search: { search: "companyName", name: "公司名称" },
+      search: { search: "areaName", name: "片区名称" },
     }
   }
 

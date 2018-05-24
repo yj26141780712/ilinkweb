@@ -44,6 +44,10 @@ import { AreaService } from '../tools/services/area.service';
 import { AreaFormComponent } from '../file-management/area-form/area-form.component';
 import { EmployeeFormComponent } from '../file-management/employee-form/employee-form.component';
 import { EmployeeService } from '../tools/services/employee.service';
+import { ClientService } from '../tools/services/client.service';
+import { ClientFormComponent } from '../file-management/client-form/client-form.component';
+import { SetAdminComponent } from '../file-management/set-admin/set-admin.component';
+import { SetFactoryComponent } from '../file-management/set-factory/set-factory.component';
 
 @NgModule({
   imports: [
@@ -88,15 +92,23 @@ import { EmployeeService } from '../tools/services/employee.service';
     TableComponent,
     CompanyFormComponent,
     AreaFormComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    ClientFormComponent,
+    SetAdminComponent,
+    SetFactoryComponent
   ],
-  providers: [MachineService, MachineValidator, CompanyService, AreaService, EmployeeService],
+  providers: [MachineService, MachineValidator, CompanyService, AreaService, EmployeeService, ClientService],
   entryComponents: [
     FittingComponent,
     SetMachineComponent,
     MachineFormComponent,
     CompanyFormComponent,
-    AreaFormComponent]
+    AreaFormComponent,
+    EmployeeFormComponent,
+    ClientFormComponent,
+    SetAdminComponent,
+    SetFactoryComponent
+  ]
 })
 export class HomeModule {
 

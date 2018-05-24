@@ -16,7 +16,7 @@ export class MachineService {
    * @param companyId 公司Id
    */
   getDeviceList(companyId: string): Observable<any> {
-    return this.gs.httpGetObservable(Global.domain + 'api/apideviceList.action', { companyId: companyId });
+    return this.gs.httpGetObservable(Global.domain + '1api/apideviceList.action', { companyId: companyId });
   }
 
 
@@ -110,6 +110,23 @@ export class MachineService {
    */
   checkRepeatMonitor(mid: string) {
     return this.gs.httpGetObservable(Global.domain + 'api/apicheckRepeatMonitor.action', { mid: mid });
+  }
+
+  /**
+   * 指定塑料厂
+   * @param deviceId 注塑机Id
+   * @param companyId 公司Id
+   * @param factoryId 塑料厂Id
+   * @param monitorId 采集器Id
+   */
+  setFactory(deviceId: string, companyId: string, factoryId: string, monitorId: string) {
+    return this.gs.httpGetObservable(Global.domain + 'api/apideviceEdit.action', {
+      'device.id': deviceId,
+      'device.companyid': companyId,
+      'device.factoryid': factoryId,
+      'device.monitorid': monitorId,
+      'type': 2
+    });
   }
 }
 

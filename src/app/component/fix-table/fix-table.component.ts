@@ -96,7 +96,7 @@ export class FixTableComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.tableInit();
-    this.databind(true, true);
+    this.bindData(true, true);
     this.pageChange();
   }
 
@@ -190,7 +190,7 @@ export class FixTableComponent implements OnInit, OnChanges {
       });
       this.search(this.searchInput);
     }
-    this.databind(true);
+    this.bindData(true);
     this.pageChange();
   }
 
@@ -272,7 +272,7 @@ export class FixTableComponent implements OnInit, OnChanges {
    * @param isInit true 初始化 false 数据重新绑定
    * @param isSearch 
    */
-  databind(isResetPage?, isInit?) {
+  bindData(isResetPage?, isInit?) {
     if (isResetPage) {
       this.currentPage = 1; //初始化
       this.inputPage = this.currentPage + '';
@@ -365,7 +365,7 @@ export class FixTableComponent implements OnInit, OnChanges {
   selectPage(num: any, event?: Event) {
     this.currentPage = this.limitPageNum(num); //页数超出最大页显示最大页
     this.inputPage = this.currentPage.toString();
-    this.databind();
+    this.bindData();
     this.pageChange();
     return false;
   }
@@ -428,7 +428,7 @@ export class FixTableComponent implements OnInit, OnChanges {
     this.isPageSelectShow = !this.isPageSelectShow;
     this.itemsPerPage = Number(event.target.text);
     // this.totalPages = parseInt((this.totalItems / this.itemsPerPage).toString()) + (this.totalItems % this.itemsPerPage > 0 ? 1 : 0);
-    this.databind(true);
+    this.bindData(true);
     this.pageChange();
     return false;
   }
@@ -477,7 +477,7 @@ export class FixTableComponent implements OnInit, OnChanges {
       });
       this.sourceSearch = [];
       if (arr.length > 0) this.sourceSearch = arr;
-      this.databind(true);
+      this.bindData(true);
       this.pageChange();
     }
   }

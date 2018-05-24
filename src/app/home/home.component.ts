@@ -116,9 +116,4 @@ export class HomeComponent implements OnInit {
   gotoLogin() {
     this.router.navigate(['login']);
   }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-
-  }
 }

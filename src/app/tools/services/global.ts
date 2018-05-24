@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
 import { Http, Headers, RequestOptionsArgs, Response } from '@angular/http';
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/Observable";
+import "rxjs/Rx";
 
 import swal from 'sweetalert2';//sweetalert2
-import { promise } from 'selenium-webdriver';
 
 @Injectable()
 export class Global {
@@ -59,7 +60,7 @@ export class GlobalService {
         if (params) {
             for (var key in params) {
                 if (params.hasOwnProperty(key)) {
-                    var value = params[key];
+                    var value = (params[key] === null || params[key] === undefined) ? '' : params[key];
                     str += encodeURIComponent(key) + '=' + encodeURIComponent(value) + '&';
                 }
             }
@@ -102,7 +103,7 @@ export class GlobalService {
             if (json.code == 200) {
                 callback(json);
             } else {
-                this.handleInfo(json.code, json.message);
+                this.handleInfo(json.code, json.message || json.msg);
             }
         }, err => {
             if (loader) {
@@ -142,7 +143,13 @@ export class GlobalService {
     }
 
     private handleInfo(code, msg) {
-        swal('', msg, 'error');
+        if (code == 200) {
+            return;
+        }
+        if (code != 200 && code != 201) {
+            //swal('', msg, 'error');
+            console.log(msg);
+        }
     }
 
     private handleError(error: Response | any) {
@@ -187,17 +194,22 @@ export class GlobalService {
             let json = res.json();
             let token = res.headers.get('token') || json.obj.token || '';
             localStorage.setItem("stoken", token);
-            if (json.code != 200 && json.code != 201) {
-                this.handleInfo(json.code, json.message);
-            }
+            this.handleInfo(json.code, json.message || json.msg);
             return json;
         });
     }
 
     /**
-     * 确认方法
+     * swal成功提示框
+     * @param msg 提示信息
      */
-    confirm() {
+    swalSuccess(msg) {
+        swal('信息', msg, 'success');
+    }
+    /**
+     * 确认删除框
+     */
+    confirmDel() {
         return swal({
             title: "确定删除么？",
             type: "warning",
@@ -205,6 +217,24 @@ export class GlobalService {
             showCancelButton: true,
             confirmButtonText: '确定删除',
             cancelButtonText: '取消',
+            confirmButtonColor: "#DD6B55",
+        });
+    }
+
+    /**
+     * 确认提示框
+     * @param title 
+     * @param confirmText 
+     * @param cancelText 
+     */
+    confirm(title: string, confirmText: string, cancelText: string) {
+        return swal({
+            title: title,
+            type: "warning",
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonText: confirmText,
+            cancelButtonText: cancelText,
             confirmButtonColor: "#DD6B55",
         });
     }
@@ -233,13 +263,17 @@ export class GlobalService {
         }
     }
 
-    checkErrors(self,formName) {
+    /**
+     * 检查表单错误
+     * @param self 组件
+     * @param formName 组件formGrop的名字
+     */
+    checkErrors(self, formName) {
         if (!self[formName]) return;
         for (const field in self.formErrors) {
             self.formErrors[field] = '';
             const control = self[formName].get(field);
             if (control && (control.dirty || control.touched) && !control.valid) {
-                console.log(control.errors);
                 const messages = self.validationMessages[field];
                 for (const key in control.errors) {
                     self.formErrors[field] += messages[key] + ' ';

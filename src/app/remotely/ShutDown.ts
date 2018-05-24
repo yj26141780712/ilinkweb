@@ -43,7 +43,7 @@ export class ShutDown implements OnInit {
         if (json.obj.stop == 1) {
           this.isStop = true;
           this.openMessage.code = json.obj.sn;
-          this.openMessage.out = json.obj.cycle1.substring(0, 10);
+          this.openMessage.out = json.obj.output.substring(0, 10);
           this.openMessage.curr = json.obj.curNum;
           this.openMessage.count = json.obj.num;
         } else {

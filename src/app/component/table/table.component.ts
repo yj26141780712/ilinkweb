@@ -64,7 +64,6 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     })
   }
   ngOnChanges() {
-    console.log(this.source);
     this.current_page = 1;
     if (this.settings) {
       this.module_table_thead = [];
@@ -163,7 +162,6 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
  * @param item 操作项
  */
   opClick(event: Event, op, item) {
-    console.log(item);
     op.callBack(item);
     event.stopPropagation();
   }
@@ -172,7 +170,6 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    * 新增事件
    */
   add() {
-    //console.log(this.addEvent.observers.length);
     this.addEvent.emit();
   }
 }

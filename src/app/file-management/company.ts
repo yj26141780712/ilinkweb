@@ -1,3 +1,4 @@
+import { SetAdminComponent } from './set-admin/set-admin.component';
 import { CompanyFormComponent } from './company-form/company-form.component';
 import { CompanyService } from './../tools/services/company.service';
 import { Component, OnInit } from '@angular/core';
@@ -49,7 +50,7 @@ export class Company implements OnInit {
       self.bsModalRef = self.modalService.show(CompanyFormComponent, { initialState });
     }
     this.operation.prototype.delete = (item) => {
-      self.gs.confirm().then(value => {
+      self.gs.confirmDel().then(value => {
         if (value) {
           self.cs.deleteCompany(self.companyId, item.id).subscribe(json => {
             if (json.code == 200) {
@@ -58,6 +59,12 @@ export class Company implements OnInit {
           });
         }
       });
+    }
+    this.operation.prototype.setAdmin = (item) => {
+      let initialState = {
+        item: item
+      }
+      self.bsModalRef = self.modalService.show(SetAdminComponent, { initialState });
     }
     this.operationObj = new this.operation();
   }
@@ -76,6 +83,7 @@ export class Company implements OnInit {
       operation: [
         { type: 'edit', iconClass: 'fa-pencil', title: "编辑", callBack: this.operationObj.edit },
         { type: 'delete', iconClass: 'fa-trash', title: "删除", callBack: this.operationObj.delete },
+        { type: 'setAdmin', iconClass: 'fa-user', title: "配置管理员", callBack: this.operationObj.setAdmin },
       ],
       search: { search: "companyName", name: "公司名称" },
     }

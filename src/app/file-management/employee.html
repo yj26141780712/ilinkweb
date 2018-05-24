@@ -1,6 +1,6 @@
 <div class="employee">
     <navigation [name]="navigations"></navigation>
     <div class="employee_content">
-        <app-table [settings]="settings" [source]="source"></app-table>
+        <app-table [settings]="settings" [source]="source" (addEvent)="add()"></app-table>
     </div>
 </div>
